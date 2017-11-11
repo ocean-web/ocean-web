@@ -6,6 +6,7 @@
     "start": "node app"
   },
   "dependencies": {
-    "express": "~4.15.5"
+    "express": "~4.15.5",
+    "socket.io": "^2.0.4"
   }
 }
