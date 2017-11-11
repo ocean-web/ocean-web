@@ -1,0 +1,29 @@
+{
+  "name": "ocean-web",
+  "version": "1.0.0",
+  "description": "A demo built at Startup Weekend NL that maintains an intranet offshore from NL's east coast through smart buoys with signal amplifiers, in order to enhance data collection, threat mitigation and tracking rig baskets in transit\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ocean-web/ocean-web.git"
+  },
+  "keywords": [
+    "ocean-web",
+    "start-up-weekend",
+    "NL",
+    "2017",
+    "MUN"
+  ],
+  "author": "ocean-web",
+  "license": "AGPL-3.0",
+  "bugs": {
+    "url": "https://github.com/ocean-web/ocean-web/issues"
+  },
+  "homepage": "https://github.com/ocean-web/ocean-web#readme",
+  "dependencies": {
+    "express": "^4.16.2"
+  }
+}
