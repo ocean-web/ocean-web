@@ -1,9 +1,11 @@
-const router = require('express').Router()
+const express = require('express');
+const path = require('path')
 
-router.use('/', () => console.log('<h1>Ocean Web Express Server'))
+const router = express.Router();
 
-router.use('/trackedClient', (req, res) => {
-  res.send('<h1>Hello World!</h1>')
-})
+/* GET home page. */
+router.get('/', function(req, res, next) {
+  res.redirect("http://localhost:3000")
+});
 
-module.exports = router
+module.exports = router;
