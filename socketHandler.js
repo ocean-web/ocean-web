@@ -3,3 +3,5 @@ const socketHandler = (client) => {
     console.log('location changed!')
   })
 }
+
+module.exports = socketHandler;
