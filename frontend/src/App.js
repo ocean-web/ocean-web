@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import {Route} from 'react-router-dom'
+import {Route, Switch} from 'react-router-dom'
 import openSocket from 'socket.io-client'
 import TrackedClient from './pages/TrackedClient'
+import ClientTracker from './pages/ClientTracker'
 import logo from './logo.svg';
 import './App.css';
 
@@ -12,9 +13,14 @@ class App extends Component {
   }
   render() {
     return (
-      <Route path='/trackedClient'>
-        <TrackedClient socket={this.socket}/>
-      </Route>
+      <Switch>
+        <Route path='/trackedClient'>
+          <TrackedClient socket={this.socket}/>
+        </Route>
+        <Route path='/clientTracker'>
+          <ClientTracker socket={this.socket}/>
+        </Route>
+      </Switch>
     );
   }
 }
