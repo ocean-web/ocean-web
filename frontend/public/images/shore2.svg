@@ -1,0 +1,23 @@
+<svg width="810" height="454" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+ <!-- Created with Method Draw - http://github.com/duopixel/Method-Draw/ -->
+
+ <g>
+  <title>background</title>
+  <rect x="-1" y="-1" width="812" height="456" id="canvas_background" fill="none"/>
+ </g>
+ <g>
+  <title>Layer 1</title>
+  <rect fill="#ffffff" stroke-width="0" x="80" y="70.5" width="639.09225" height="363.00001" id="svg_1" stroke="#000"/>
+  <rect fill="#007fff" stroke="#000" stroke-width="0" stroke-opacity="null" x="133" y="100.5" width="49" height="46" id="svg_2"/>
+  <rect fill="#007fff" stroke="#000" stroke-width="0" stroke-opacity="null" x="244.22454" y="99.5" width="49" height="46" id="svg_3"/>
+  <rect fill="#007fff" stroke="#000" stroke-width="0" stroke-opacity="null" x="359.43321" y="100.5" width="49" height="46" id="svg_4"/>
+  <rect fill="#007fff" stroke="#000" stroke-width="0" stroke-opacity="null" x="479.0708" y="100.5" width="49" height="46" id="svg_5"/>
+  <rect fill="#007fff" stroke="#000" stroke-width="0" stroke-opacity="null" x="606.71405" y="100.5" width="49" height="46" id="svg_6"/>
+  <rect fill="#007fff" stroke="#000" stroke-width="0" stroke-opacity="null" x="133" y="228.50391" width="49" height="46" id="svg_7"/>
+  <rect fill="#007fff" stroke="#000" stroke-width="0" stroke-opacity="null" x="244.22454" y="227.53516" width="49" height="46" id="svg_8"/>
+  <rect fill="#007fff" stroke="#000" stroke-width="0" stroke-opacity="null" x="359.43321" y="227.64165" width="49" height="46" id="svg_9"/>
+  <rect fill="#007fff" stroke="#000" stroke-width="0" stroke-opacity="null" x="479.0708" y="226.56587" width="49" height="46" id="svg_10"/>
+  <rect fill="#007fff" stroke="#000" stroke-width="0" stroke-opacity="null" x="606.71405" y="227.26566" width="49" height="46" id="svg_11"/>
+  <rect fill="#ffffff" stroke="#000" stroke-width="0" stroke-opacity="null" x="80" y="20.5" width="396" height="51" id="svg_12"/>
+ </g>
+</svg>
