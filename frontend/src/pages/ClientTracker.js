@@ -3,11 +3,25 @@ import MapView from './MapView'
 import DetailView from './DetailView'
 
 class ClientTracker extends React.Component {
+
+  constructor(props) {
+    super(props)
+    this.state = { activeView: 'MapView' }
+  }
+
+  handleMarkerClick() {
+    this.setState({activeView: 'DetailView'})
+  }
+
   render() {
     return (
       <div>
-        <MapView socket={this.props.socket}/>
-        <DetailView socket={this.props.socket}/>
+        {
+          this.state.activeView === 'MapView' ?
+            <MapView socket={this.props.socket} onMarkerClick={() => this.handleMarkerClick()}/> 
+            :
+            <DetailView socket={this.props.socket}/>
+        }
       </div>
     )
   }

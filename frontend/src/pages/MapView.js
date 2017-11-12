@@ -7,10 +7,10 @@ import {io, socket} from "socket.io-client"
 // import { Server } from 'http'
 
 
-const buoy1 = {lat:47.350750, lng:-53.113506, image: "images/buoy.png"};	// buoy1
-const buoy2 = {lat:47.350881, lng:-53.113446, image: "images/buoy.png"};	// buoy2
-const ship  = {lat:47.351112, lng:-53.113617, image: "images/ship.png"};	// ship
-const rig   = {lat:47.350801, lng:-53.113142, image: "images/rig.png"};		// rig
+const buoy1 = {lat:47.350750, lng:-53.113506, image: "images/buoy.png"};
+const buoy2 = {lat:47.350881, lng:-53.113446, image: "images/buoy.png"};
+const ship  = {lat:47.351112, lng:-53.113617, image: "images/ship.png", clickable: true};
+const rig   = {lat:47.350801, lng:-53.113142, image: "images/rig.png"};
 
 // const loadClients = () => {	//
 // 	// const socket = ;
@@ -29,7 +29,7 @@ const MapComponent = compose(
   withProps({
     googleMapURL: "https://maps.googleapis.com/maps/api/js?key=AIzaSyCysVxJ3Ciav_vaMFbTFY0FEDvuUBN9wys&v=3.exp&libraries=geometry,drawing,places",
     loadingElement: <div style={{ height: `100%` }} />,
-    containerElement: <div style={{ height: `400px` }} />,
+    containerElement: <div style={{ height: `100vh` }} />,
     mapElement: <div style={{ height: `100%` }} />,
     markers: [buoy1, buoy2, ship, rig]
   }),
@@ -47,7 +47,7 @@ const MapComponent = compose(
 	      key={index}
           position={marker}
           title="Click to zoom"
-          onClick={props.onMarkerClick}
+          onClick={marker.clickable ? () => props.onMarkerClick() : () => {}}
           icon={marker.image}
         />
       )
@@ -80,16 +80,17 @@ class MapView extends React.PureComponent {
     }, 3000)
   }
 
-  handleMarkerClick = () => {
-    this.setState({ isMarkerShown: false })
-    this.delayedShowMarker()
-  }
+  // handleMarkerClick = () => {
+  //   // this.setState({ isMarkerShown: false })
+  //   this.delayedShowMarker()
+  //
+  // }
 
   render() {
     return (
       <MapComponent
         isMarkerShown={this.state.isMarkerShown}
-        onMarkerClick={this.handleMarkerClick}
+        onMarkerClick={() => this.props.onMarkerClick()}
       />
     )
   }
