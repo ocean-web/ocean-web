@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Switch, Route} from 'react-router-dom'
+import {Route, Switch} from 'react-router-dom'
 import openSocket from 'socket.io-client'
 import TrackedClient from './pages/TrackedClient'
 import ClientTracker from './pages/ClientTracker'
@@ -17,9 +17,8 @@ class App extends Component {
         <Route path='/trackedClient'>
           <TrackedClient socket={this.socket}/>
         </Route>
-
         <Route path='/clientTracker'>
-          <ClientTracker/>
+          <ClientTracker socket={this.socket}/>
         </Route>
       </Switch>
     );
