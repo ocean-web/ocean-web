@@ -57,7 +57,7 @@ const MapComponent = compose(
 class MapView extends React.PureComponent {
   state = {
     isMarkerShown: false,
-    // data: {},
+    markers: []
   }
 
   sendMessage = message => {
@@ -71,6 +71,19 @@ class MapView extends React.PureComponent {
     // 	console.log("testing connection")
     // })
     // loadClients()
+    this.props.socket.on('location-changed', (data) => {
+      debugger
+      this.setState(prevState => {
+        const index = prevState.markers.findIndex(marker => marker.client === data.client)
+        if(index !== -1){
+          prevState.markers[index] = data
+        }
+        else{
+          prevState.markers.push(data)
+        }
+        return {markers: prevState.markers}
+      })
+    })
   }
 
   delayedShowMarker = () => {
@@ -90,7 +103,7 @@ class MapView extends React.PureComponent {
       <MapComponent
         isMarkerShown={this.state.isMarkerShown}
         onMarkerClick={() => this.props.onMarkerClick()}
-        markers={[buoy1, buoy2, ship, rig]}
+        markers={this.state.markers}
       />
     )
   }

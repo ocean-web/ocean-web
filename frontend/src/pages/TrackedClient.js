@@ -1,10 +1,10 @@
 import React from 'react'
 
 const options = [
-    { value: 'one', label: 'Buoy 1'},
-    { value: 'two', label: 'Buoy 2'},
-    { value: 'three', label: 'Ship'},
-    { value: 'four', label: 'Rig'},
+    { value: 'one', label: 'buoy1'},
+    { value: 'two', label: 'buoy2'},
+    { value: 'three', label: 'ship'},
+    { value: 'four', label: 'rig'},
 ];
 
 class TrackedClient extends React.Component{
@@ -14,16 +14,12 @@ class TrackedClient extends React.Component{
       selected: false
     }
   }
-  componentDidMount(){
-    this.props.socket.emit('location-changed', "Works!")
-  }
 
   activateSocket(label){
     this.setState({selected: true})
     this.props.socket.emit('client-connected', label)
     setInterval(() =>
       navigator.geolocation.getCurrentPosition((position) => {
-        debugger
         this.props.socket.emit('location-changed', {
           client: label,
           lat: position.coords.latitude,

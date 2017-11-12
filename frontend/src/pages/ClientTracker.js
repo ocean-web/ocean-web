@@ -14,10 +14,6 @@ class ClientTracker extends React.Component {
     this.setState({activeView})
   }
 
-  componentDidMount(){
-    this.props.socket.on('location-changed', () => console.log("location"))
-  }
-
   render() {
     return (
       <div>
