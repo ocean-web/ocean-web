@@ -1,6 +1,7 @@
 import React from 'react'
 import MapView from './MapView'
 import DetailView from './DetailView'
+import io from 'socket.io-client'
 
 class ClientTracker extends React.Component {
 
@@ -9,8 +10,12 @@ class ClientTracker extends React.Component {
     this.state = { activeView: 'MapView' }
   }
 
-  handleMarkerClick() {
-    this.setState({activeView: 'DetailView'})
+  handleMarkerClick(activeView) {
+    this.setState({activeView})
+  }
+
+  componentDidMount(){
+    this.props.socket.on('location-changed', () => console.log("location"))
   }
 
   render() {
@@ -18,9 +23,9 @@ class ClientTracker extends React.Component {
       <div>
         {
           this.state.activeView === 'MapView' ?
-            <MapView socket={this.props.socket} onMarkerClick={() => this.handleMarkerClick()}/> 
+            <MapView socket={this.props.socket} onMarkerClick={() => this.handleMarkerClick('DetailView')}/>
             :
-            <DetailView socket={this.props.socket}/>
+            <DetailView socket={this.props.socket} onPageSwitch={() => this.handleMarkerClick('MapView')}/>
         }
       </div>
     )

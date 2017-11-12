@@ -1,5 +1,4 @@
 import React from 'react'
-import Select from 'react-select'
 
 const options = [
     { value: 'one', label: 'Buoy 1'},
@@ -8,32 +7,45 @@ const options = [
     { value: 'four', label: 'Rig'},
 ];
 
-function logChange(val) {
-  console.log('Selected: ' + val);
-}
-
 class TrackedClient extends React.Component{
+  constructor(props){
+    super(props)
+    this.state = {
+      selected: false
+    }
+  }
   componentDidMount(){
     this.props.socket.emit('location-changed', "Works!")
   }
-<<<<<<< HEAD
-  render(){
-    return(
-      <div>Hello World</div>
-=======
+
+  activateSocket(label){
+    this.setState({selected: true})
+    this.props.socket.emit('client-connected', label)
+    setInterval(() =>
+      navigator.geolocation.getCurrentPosition((position) => {
+        debugger
+        this.props.socket.emit('location-changed', {
+          client: label,
+          lat: position.coords.latitude,
+          lng: position.coords.longitude
+        })
+      }, (err) => console.log(err)), 1000)
+  }
 
   render(){
+    const {selected} = this.state
     return(
       <div>
         <h3>Select a client</h3>
-        <Select
-          name="select-client"
-          value="one"
-          options={options}
-          onChange={logChange}
-        />
+        {
+          !selected &&
+          options.map(option => (
+            <button key={option.value}
+                    onClick={() => this.activateSocket(option.label)}
+            >{option.label}</button>
+          ))
+        }
       </div>
->>>>>>> 2d00c2a8cc1b1cd497e7c1c2fa7092c6c7630857
     )
   }
 }

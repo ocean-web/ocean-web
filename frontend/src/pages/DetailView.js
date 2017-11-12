@@ -1,4 +1,4 @@
-import React from 'react'
+﻿import React from 'react'
 import styled from 'styled-components'
 import FontAwesome from 'react-fontawesome'
 import moment from 'moment'
@@ -7,20 +7,13 @@ import {XYPlot, LineSeries, VerticalGridLines,
    HorizontalGridLines, XAxis, YAxis, VerticalBarSeries, RadarChart} from 'react-vis'
 import targetData from '../data/targetData'
 
-<<<<<<< HEAD
-class ClientTracker extends React.Component{
-=======
 class DetailView extends React.Component{
->>>>>>> 2d00c2a8cc1b1cd497e7c1c2fa7092c6c7630857
   constructor(props){
     super(props)
     this.state = {
       markerPosition: 0,
       timeRemaining: "N/A",
-<<<<<<< HEAD
       loaded: false,
-=======
->>>>>>> 2d00c2a8cc1b1cd497e7c1c2fa7092c6c7630857
       activeContainer: {
         long: 15,
         lat: 0,
@@ -44,10 +37,7 @@ class DetailView extends React.Component{
     this.props.socket.on('location-changed', (data) => this.handleLocationChange(data))
     setInterval(() => this.randomiseData(), 4000)
     setInterval(() => this.updateTimeRemaining(), 1000)
-<<<<<<< HEAD
     setTimeout(() => this.setState({loaded: true}), 100)
-=======
->>>>>>> 2d00c2a8cc1b1cd497e7c1c2fa7092c6c7630857
   }
 
   randomiseData(){
@@ -97,19 +87,12 @@ class DetailView extends React.Component{
   }
 
   render(){
-<<<<<<< HEAD
     const {activeContainer, wind, pressure, timeRemaining, loaded} = this.state
     const {onPageSwitch} = this.props
     return(
       <Wrapper loaded={loaded}>
         <VisualContainer>
           <ToMap onClick={() => onPageSwitch()}>Map</ToMap>
-=======
-    const {activeContainer, wind, pressure, timeRemaining} = this.state
-    return(
-      <Wrapper>
-        <VisualContainer>
->>>>>>> 2d00c2a8cc1b1cd497e7c1c2fa7092c6c7630857
           <JourneyHeading>Journey</JourneyHeading>
           <JourneyWrapper>
             <SVG src="images/shore2.svg"/>
@@ -199,11 +182,7 @@ class DetailView extends React.Component{
               <tbody>
                 <tr>
                   <td>
-<<<<<<< HEAD
                     <ContainerGridHeader>Importance</ContainerGridHeader>
-=======
-                    <ContainerGridHeader>Status</ContainerGridHeader>
->>>>>>> 2d00c2a8cc1b1cd497e7c1c2fa7092c6c7630857
                     <ContainerEmphasizedText>Critical</ContainerEmphasizedText>
                   </td>
                   <td>
@@ -234,17 +213,11 @@ class DetailView extends React.Component{
   }
 }
 
-<<<<<<< HEAD
-export default ClientTracker
+export default DetailView
 
 const Wrapper = styled.div`
   opacity: ${({loaded}) => loaded ? `1` : `0`};
   transition: opacity 1s;
-=======
-export default DetailView
-
-const Wrapper = styled.div`
->>>>>>> 2d00c2a8cc1b1cd497e7c1c2fa7092c6c7630857
 `
 
 const VisualContainer = styled.div`
@@ -252,7 +225,6 @@ const VisualContainer = styled.div`
   background-color: #007fff;
   padding: 5rem 0;
   color: #fff;
-<<<<<<< HEAD
   position: relative;
 `
 
@@ -270,8 +242,6 @@ const ToMap = styled.div`
   &:hover{
     background-color: rgba(255, 255, 255, 0.1);
   }
-=======
->>>>>>> 2d00c2a8cc1b1cd497e7c1c2fa7092c6c7630857
 `
 
 const JourneyWrapper = styled.div`
