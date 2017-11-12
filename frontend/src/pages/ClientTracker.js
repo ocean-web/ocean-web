@@ -9,8 +9,8 @@ class ClientTracker extends React.Component {
     this.state = { activeView: 'MapView' }
   }
 
-  handleMarkerClick() {
-    this.setState({activeView: 'DetailView'})
+  handleMarkerClick(activeView) {
+    this.setState({activeView})
   }
 
   render() {
@@ -18,9 +18,9 @@ class ClientTracker extends React.Component {
       <div>
         {
           this.state.activeView === 'MapView' ?
-            <MapView socket={this.props.socket} onMarkerClick={() => this.handleMarkerClick()}/> 
+            <MapView socket={this.props.socket} onMarkerClick={() => this.handleMarkerClick('DetailView')}/>
             :
-            <DetailView socket={this.props.socket}/>
+            <DetailView socket={this.props.socket} onPageSwitch={() => this.handleMarkerClick('MapView')}/>
         }
       </div>
     )

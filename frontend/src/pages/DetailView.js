@@ -7,12 +7,13 @@ import {XYPlot, LineSeries, VerticalGridLines,
    HorizontalGridLines, XAxis, YAxis, VerticalBarSeries, RadarChart} from 'react-vis'
 import targetData from '../data/targetData'
 
-class DetailView extends React.Component{
+class ClientTracker extends React.Component{
   constructor(props){
     super(props)
     this.state = {
       markerPosition: 0,
       timeRemaining: "N/A",
+      loaded: false,
       activeContainer: {
         long: 15,
         lat: 0,
@@ -36,6 +37,7 @@ class DetailView extends React.Component{
     this.props.socket.on('location-changed', (data) => this.handleLocationChange(data))
     setInterval(() => this.randomiseData(), 4000)
     setInterval(() => this.updateTimeRemaining(), 1000)
+    setTimeout(() => this.setState({loaded: true}), 100)
   }
 
   randomiseData(){
@@ -85,10 +87,12 @@ class DetailView extends React.Component{
   }
 
   render(){
-    const {activeContainer, wind, pressure, timeRemaining} = this.state
+    const {activeContainer, wind, pressure, timeRemaining, loaded} = this.state
+    const {onPageSwitch} = this.props
     return(
-      <Wrapper>
+      <Wrapper loaded={loaded}>
         <VisualContainer>
+          <ToMap onClick={() => onPageSwitch()}>Map</ToMap>
           <JourneyHeading>Journey</JourneyHeading>
           <JourneyWrapper>
             <SVG src="images/shore2.svg"/>
@@ -178,7 +182,7 @@ class DetailView extends React.Component{
               <tbody>
                 <tr>
                   <td>
-                    <ContainerGridHeader>Status</ContainerGridHeader>
+                    <ContainerGridHeader>Importance</ContainerGridHeader>
                     <ContainerEmphasizedText>Critical</ContainerEmphasizedText>
                   </td>
                   <td>
@@ -209,9 +213,11 @@ class DetailView extends React.Component{
   }
 }
 
-export default DetailView
+export default ClientTracker
 
 const Wrapper = styled.div`
+  opacity: ${({loaded}) => loaded ? `1` : `0`};
+  transition: opacity 1s;
 `
 
 const VisualContainer = styled.div`
@@ -219,6 +225,23 @@ const VisualContainer = styled.div`
   background-color: #007fff;
   padding: 5rem 0;
   color: #fff;
+  position: relative;
+`
+
+const ToMap = styled.div`
+  position: absolute;
+  right: 2rem;
+  top: 1rem;
+  font-weight: 100;
+  font-size: 1.5rem;
+  padding: 0.5rem;
+  border: 1px solid #fff;
+  border-radius: 10px;
+  cursor: pointer;
+
+  &:hover{
+    background-color: rgba(255, 255, 255, 0.1);
+  }
 `
 
 const JourneyWrapper = styled.div`
