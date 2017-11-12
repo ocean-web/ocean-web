@@ -1,6 +1,6 @@
 const socketHandler = (client, io) => {
   client.on('location-changed', (data) => {
-    io.emit('location-changed', {...data,...clientIcons[data.client])
+    io.emit('location-changed', {...data,...clientIcons[data.client]})
     console.log(data)
   })
 }
